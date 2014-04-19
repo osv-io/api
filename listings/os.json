@@ -33,7 +33,7 @@
                 {
                     "method": "GET",
                     "summary": "OS manufacturer",
-                    "notes": "return the OS vendor",
+                    "notes": "return the OS manufacturer",
                     "responseClass": "string",
                     "nickname": "getOSmanufacturer",
                     "produces": [
@@ -51,8 +51,8 @@
             "operations": [
                 {
                     "method": "GET",
-                    "summary": "Time in seconds since the system was boot",
-                    "notes": "Time in seconds since the system was boot",
+                    "summary": "Time in seconds since the system was booted",
+                    "notes": "Time in seconds since the system was booted",
                     "responseClass": "long",
                     "nickname": "getLastBootUpTime",
                     "produces": [
@@ -71,7 +71,7 @@
                 {
                     "method": "GET",
                     "summary": "current time and date",
-                    "notes": "return the OS time and date",
+                    "notes": "return the current time and date",
                     "responseClass": "dateTime",
                     "nickname": "getDate",
                     "produces": [
@@ -89,7 +89,7 @@
             "operations": [
                 {
                     "method": "GET",
-                    "summary": "return OS Total Virtual Memory Size in bytes",
+                    "summary": "return OS total virtual memory Size in bytes",
                     "notes": "",
                     "responseClass": "long",
                     "nickname": "getTotalVirtualMemorySize",
@@ -108,7 +108,7 @@
             "operations": [
                 {
                     "method": "GET",
-                    "summary": "return OS Free Virtual Memory in bytes",
+                    "summary": "return OS free virtual memory in bytes",
                     "notes": "",
                     "responseClass": "long",
                     "nickname": "getFreeVirtualMemory",
@@ -127,8 +127,8 @@
             "operations": [
                 {
                     "method": "POST",
-                    "summary": "shutdown the OS",
-                    "notes": "",
+                    "summary": "shut down the OS",
+                    "notes": "shut down the OS",
                     "responseClass": "",
                     "nickname": "shutdown",
                     "parameters": [
