@@ -13,8 +13,8 @@
             "operations": [
                 {
                     "method": "GET",
-                    "summary": "JAVA version",
-                    "notes": "return the version of the JAVA runtime",
+                    "summary": "Java version",
+                    "notes": "return the version of the Java runtime",
                     "responseClass": "string",
                     "nickname": "getJavaVersion",
                     "produces": [
