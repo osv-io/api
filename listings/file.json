@@ -46,7 +46,8 @@
                      "required":true,
                      "allowMultiple":false,
                      "dataType":"string",
-                     "paramType":"query"
+                     "paramType":"query",
+                     "enum":["GET", "LISTSTATUS", "GETFILESTATUS"]
                   },
                   {
                      "name":"offset",
@@ -101,7 +102,8 @@
                      "required":true,
                      "allowMultiple":false,
                      "dataType":"string",
-                     "paramType":"query"
+                     "paramType":"query",
+                     "enum":["DELETE"]
                   }
                ]
             },
@@ -166,6 +168,7 @@
                   {
                      "name":"op",
                      "description":"The operation to perform",
+                     "enum":["MKDIRS", "RENAME", "COPY"],
                      "required":true,
                      "allowMultiple":false,
                      "dataType":"string",
@@ -173,10 +176,10 @@
                   },
                   {
                      "name":"permission",
-                     "description":"The permission of a file/directory",
+                     "description":"The permission of a file/directory as a octal string.",
                      "required":false,
                      "allowMultiple":false,
-                     "dataType":"int",
+                     "dataType":"string",
                      "paramType":"query"
                   },
                   {

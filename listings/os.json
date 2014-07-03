@@ -135,8 +135,118 @@
                     ],
                     "deprecated": "false"
                 }
+	    ]
+	},
+	{
+	    "path": "/os/dmesg",
+	    "operations": [
+		{
+		    "method": "GET",
+		    "summary": "return the boot up debug messages",
+		    "notes": "",
+		    "responseClass": "string",
+		    "nickname" : "getDebugMessages",
+		    "produces": [
+		        "application/json",
+			"application/xml"
+		    ],
+		    "parameters": [
+		    ],
+		    "deprecated": "false"
+		}
+	    ]
+
+	},
+	{
+	    "path": "/os/hostname",
+	    "operations": [
+                {
+		    "method": "GET",
+		    "summary": "get the hostname",
+		    "responseClass": "string",
+		    "nickname": "getHostname",
+		    "produces": [
+		        "application/json",
+		        "application/xml"
+		    ],
+		    "parameters": [
+		    ],
+		    "deprecated": "false"
+                },
+	        {
+		    "method": "POST",
+		    "summary": "set the hostname",
+		    "responseClass": "string",
+		    "nickname": "setHostname",
+		    "produces": [
+		        "application/json",
+		        "application/xml"
+		    ],
+		    "parameters": [
+		        {
+			    "name": "name",
+			    "description": "new hostname",
+			    "required": true,
+			    "allowMultiple":false,
+			    "dataType":"string",
+			    "paramType":"query"
+		        }
+		    ],
+		    "deprecated": "false"
+	        }
+            ]
+        },
+        {
+            "path": "/os/threads",
+            "operations": [
+                {
+                    "method": "GET",
+                    "summary": "list threads",
+                    "notes": "",
+                    "responseClass": "Threads",
+                    "nickname" : "listThreads",
+                    "produces": [
+                        "application/json",
+                                "application/xml"
+                    ],
+                    "parameters": [
+                    ],
+                    "deprecated": "false"
+                }
             ]
         }
-    ]
-
+    ],
+    "models" : {
+        "Thread": {
+           "description": "Information on one thread",
+               "properties": {
+                "id": {
+                    "type": "long",
+                    "description": "32-bit thread id"
+                },
+                "cpu_ms" : {
+                    "type": "long",
+                    "description": "Total CPU time used by the thread (in milliseconds)"
+                },
+                "name" : {
+                     "type": "string",
+                    "description": "Thread description (not necessarily unique)"
+                }
+            }
+        },
+        "Threads": {
+           "description": "List of threads",
+               "properties": {
+                "list": {
+                    "type": "array",
+                    "items": {"type": "Thread"},
+                    "description": "List of thread objects"
+                },
+                "time_ms": {
+                    "type": "long",
+                    "description": "Time when thread list was taken (milliseconds since epoche)"
+                }
+            }
+        }
+    }
 }

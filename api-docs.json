@@ -13,6 +13,14 @@
         {
             "path": "/../listings/file.json",
             "description": "file API"
+        },
+        {
+            "path": "/../listings/env.json",
+            "description": "Environment Variables API"
+		},
+		{
+            "path": "/../listings/trace.json",
+            "description": "trace API"
         }
     ]
 }
