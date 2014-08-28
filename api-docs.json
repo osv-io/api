@@ -15,16 +15,20 @@
             "description": "JVM API"
         },
         {
+            "path": "/../listings/jolokia.json",
+            "description": "Jolokia API"
+        },
+        {
             "path": "/../listings/file.json",
-            "description": "file API"
+            "description": "File API"
         },
         {
             "path": "/../listings/env.json",
-            "description": "Environment Variables API"
-		},
-		{
+            "description": "Environment variables API"
+        },
+        {
             "path": "/../listings/trace.json",
-            "description": "trace API"
+            "description": "Trace API"
         },
         {
             "path": "/../listings/hardware.json",
@@ -34,6 +38,5 @@
             "path": "/../listings/network.json",
             "description": "Network API"
         }
-
     ]
 }
