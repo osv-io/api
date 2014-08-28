@@ -1,25 +1,22 @@
 {
     "apiVersion": "0.0.1",
     "swaggerVersion": "1.2",
-    "basePath": "http://{{Host}}",
+    "basePath": "{{Protocol}}://{{Host}}",
     "resourcePath": "/os",
     "produces": [
-        "application/json",
-        "application/xml"
+        "application/json"
     ],
     "apis": [
         {
-            "path": "/os/version",
+            "path": "/os/name",
             "operations": [
                 {
                     "method": "GET",
-                    "summary": "OS version",
-                    "notes": "return the version of the OS",
+                    "summary": "Returns name of the operating system",
                     "responseClass": "string",
-                    "nickname": "getOSversion",
+                    "nickname": "os_name",
                     "produces": [
-                        "application/json",
-                        "application/xml"
+                        "application/json"
                     ],
                     "parameters": [
                     ],
@@ -28,17 +25,32 @@
             ]
         },
         {
-            "path": "/os/manufacturer",
+            "path": "/os/version",
             "operations": [
                 {
                     "method": "GET",
-                    "summary": "OS manufacturer",
-                    "notes": "return the OS vendor",
+                    "summary": "Returns version of the operating system",
                     "responseClass": "string",
-                    "nickname": "getOSmanufacturer",
+                    "nickname": "os_version",
                     "produces": [
-                        "application/json",
-                        "application/xml"
+                        "application/json"
+                    ],
+                    "parameters": [
+                    ],
+                    "deprecated": "false"
+                }
+            ]
+        },
+        {
+            "path": "/os/vendor",
+            "operations": [
+                {
+                    "method": "GET",
+                    "summary": "Returns the vendor of the operating system",
+                    "responseClass": "string",
+                    "nickname": "os_vendor",
+                    "produces": [
+                        "application/json"
                     ],
                     "parameters": [
                     ],
@@ -51,13 +63,11 @@
             "operations": [
                 {
                     "method": "GET",
-                    "summary": "Time in seconds since the system was boot",
-                    "notes": "Time in seconds since the system was boot",
+                    "summary": "Returns the number of seconds since the system was booted",
                     "responseClass": "long",
-                    "nickname": "getLastBootUpTime",
+                    "nickname": "os_uptime",
                     "produces": [
-                        "application/json",
-                        "application/xml"
+                        "application/json"
                     ],
                     "parameters": [
                     ],
@@ -70,13 +80,11 @@
             "operations": [
                 {
                     "method": "GET",
-                    "summary": "current time and date",
-                    "notes": "return the OS time and date",
+                    "summary": "Returns the current date and time",
                     "responseClass": "dateTime",
-                    "nickname": "getDate",
+                    "nickname": "os_date",
                     "produces": [
-                        "application/json",
-                        "application/xml"
+                        "application/json"
                     ],
                     "parameters": [
                     ],
@@ -89,13 +97,11 @@
             "operations": [
                 {
                     "method": "GET",
-                    "summary": "return OS Total Virtual Memory Size in bytes",
-                    "notes": "",
+                    "summary": "Returns total amount of memory usable by the system (in bytes)",
                     "responseClass": "long",
-                    "nickname": "getTotalVirtualMemorySize",
+                    "nickname": "os_memory_total",
                     "produces": [
-                        "application/json",
-                        "application/xml"
+                        "application/json"
                     ],
                     "parameters": [
                     ],
@@ -108,13 +114,11 @@
             "operations": [
                 {
                     "method": "GET",
-                    "summary": "return OS Free Virtual Memory in bytes",
-                    "notes": "",
+                    "summary": "Returns the amount of free memory in the system (in bytes)",
                     "responseClass": "long",
-                    "nickname": "getFreeVirtualMemory",
+                    "nickname": "os_memory_free",
                     "produces": [
-                        "application/json",
-                        "application/xml"
+                        "application/json"
                     ],
                     "parameters": [
                     ],
@@ -123,14 +127,30 @@
             ]
         },
         {
+            "path": "/os/memory/balloon",
+            "operations": [
+                {
+                    "method": "GET",
+                    "summary": "Returns the JVM balloon size (in bytes)",
+                    "notes": "",
+                    "responseClass": "long",
+                    "nickname": "os_memory_balloon",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "parameters": [
+                    ]
+                }
+            ]
+        },
+        {
             "path": "/os/shutdown",
             "operations": [
                 {
                     "method": "POST",
-                    "summary": "shutdown the OS",
-                    "notes": "",
+                    "summary": "Shuts down the system",
                     "responseClass": "",
-                    "nickname": "shutdown",
+                    "nickname": "os_shutdown",
                     "parameters": [
                     ],
                     "deprecated": "false"
@@ -142,13 +162,12 @@
 	    "operations": [
 		{
 		    "method": "GET",
-		    "summary": "return the boot up debug messages",
+		    "summary": "Returns the operating system boot log",
 		    "notes": "",
 		    "responseClass": "string",
-		    "nickname" : "getDebugMessages",
+		    "nickname" : "os_dmesg",
 		    "produces": [
-		        "application/json",
-			"application/xml"
+		        "application/json"
 		    ],
 		    "parameters": [
 		    ],
@@ -162,12 +181,11 @@
 	    "operations": [
                 {
 		    "method": "GET",
-		    "summary": "get the hostname",
+		    "summary": "Returns the system host name",
 		    "responseClass": "string",
-		    "nickname": "getHostname",
+		    "nickname": "os_get_hostname",
 		    "produces": [
-		        "application/json",
-		        "application/xml"
+		        "application/json"
 		    ],
 		    "parameters": [
 		    ],
@@ -175,12 +193,11 @@
                 },
 	        {
 		    "method": "POST",
-		    "summary": "set the hostname",
+		    "summary": "Sets the system host name",
 		    "responseClass": "string",
-		    "nickname": "setHostname",
+		    "nickname": "os_set_hostname",
 		    "produces": [
-		        "application/json",
-		        "application/xml"
+		        "application/json"
 		    ],
 		    "parameters": [
 		        {
@@ -201,13 +218,11 @@
             "operations": [
                 {
                     "method": "GET",
-                    "summary": "list threads",
-                    "notes": "",
+                    "summary": "Returns a list of threads in the system",
                     "responseClass": "Threads",
-                    "nickname" : "listThreads",
+                    "nickname" : "os_threads",
                     "produces": [
-                        "application/json",
-                                "application/xml"
+                        "application/json"
                     ],
                     "parameters": [
                     ],
@@ -220,13 +235,12 @@
             "operations": [
                     {
                 "method": "GET",
-                "summary": "get the current boot cmdline",
+                "summary": "Returns the current boot command line",
                 "notes": "This operation retrieves the current OSv command line. The current command line is either the command line used for the current boot, or the one written by POST.",
                 "responseClass": "string",
-                "nickname": "getCmdline",
+                "nickname": "os_get_cmdline",
                 "produces": [
-                    "application/json",
-                    "application/xml"
+                    "application/json"
                 ],
                 "parameters": [
                 ],
@@ -234,13 +248,12 @@
                     },
                 {
                 "method": "POST",
-                "summary": "modify command line",
+                "summary": "Sets the current boot command line",
                 "notes": "This operation replaces the current OSv command line with a new one. The old command line is completely removed. Users wanting to add fields to the command line using this POST operation should first GET it, make the necessary changes, and then POST the result.",
                 "responseClass": "string",
-                "nickname": "replaceCmdline",
+                "nickname": "os_set_cmdline",
                 "produces": [
-                    "application/json",
-                    "application/xml"
+                    "application/json"
                 ],
                 "parameters": [
                     {
@@ -265,10 +278,30 @@
                     "type": "long",
                     "description": "32-bit thread id"
                 },
+                "cpu": {
+                    "type": "long",
+                    "description": "CPU the thread is running on"
+                },
                 "cpu_ms" : {
                     "type": "long",
                     "description": "Total CPU time used by the thread (in milliseconds)"
                 },
+                "priority": { "type": "float" },
+                "stack_size": { "type": "long" },
+                "status": {
+                  "type": "string",
+                  "description": "thread status",
+                  "enum": [
+                  "invalid",
+                  "prestarted",
+                  "unstarted",
+                  "waiting",
+                  "running",
+                  "queued",
+                  "waking",
+                  "terminating",
+                  "terminated"
+                ]},
                 "name" : {
                      "type": "string",
                     "description": "Thread description (not necessarily unique)"

@@ -1,11 +1,10 @@
 {
    "apiVersion":"0.0.1",
    "swaggerVersion":"1.2",
-   "basePath":"http://{{Host}}",
+   "basePath":"{{Protocol}}://{{Host}}",
    "resourcePath":"/file",
    "produces":[
-      "application/json",
-      "application/xml"
+      "application/json"
    ],
    "apis":[
       {
@@ -28,8 +27,7 @@
                ],
                "nickname":"getFile",
                "produces":[
-                  "application/json",
-                  "application/xml"
+                  "application/json"
                ],
                "parameters":[
                   {
@@ -84,8 +82,7 @@
                ],
                "nickname":"delFile",
                "produces":[
-                  "application/json",
-                  "application/xml"
+                  "application/json"
                ],
                "parameters":[
                   {
@@ -95,6 +92,14 @@
                      "allowMultiple":true,
                      "dataType":"string",
                      "paramType":"path"
+                  },
+                  {
+                     "name":"recursive",
+                     "description":"Should the operation act on the content in the subdirectories",
+                     "required":false,
+                     "allowMultiple":false,
+                     "dataType":"boolean",
+                     "paramType":"query"
                   },
                   {
                      "name":"op",
@@ -114,8 +119,7 @@
                "responseClass":"string",
                "nickname":"upload",
                "produces":[
-                  "application/json",
-                  "application/xml"
+                  "application/json"
                ],
                "parameters":[
                   {
@@ -153,8 +157,7 @@
                ],
                "nickname":"putFile",
                "produces":[
-                  "application/json",
-                  "application/xml"
+                  "application/json"
                ],
                "parameters":[
                   {

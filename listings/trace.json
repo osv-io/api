@@ -1,11 +1,10 @@
 {
     "apiVersion": "0.0.1",
     "swaggerVersion": "1.2",
-    "basePath": "http://{{Host}}",
+    "basePath": "{{Protocol}}://{{Host}}",
     "resourcePath": "/trace",
     "produces": [
-        "application/json",
-        "application/xml"
+        "application/json"
     ],
     "apis": [
         {
@@ -18,8 +17,7 @@
                     "responseClass": "List[TraceEventInfo]",
                     "nickname": "getTraceEventStatus",
                     "produces": [
-                        "application/json",
-                        "application/xml"
+                        "application/json"
                     ],
                     "parameters": [
                         {
@@ -40,8 +38,7 @@
                     "responseClass": "List[TraceEventInfo]",
                     "nickname": "setTraceEventStatus",
                     "produces": [
-                        "application/json",
-                        "application/xml"
+                        "application/json"
                     ],
                     "parameters": [
                         {
@@ -83,8 +80,7 @@
                     "responseClass": "TraceEventInfo",
                     "nickname": "getSingleTraceEventStatus",
                     "produces": [
-                        "application/json",
-                        "application/xml"
+                        "application/json"
                     ],
                     "parameters": [
                         {
@@ -105,8 +101,7 @@
                     "responseClass": "TraceEventInfo",
                     "nickname": "setSingleTraceEventStatus",
                     "produces": [
-                        "application/json",
-                        "application/xml"
+                        "application/json"
                     ],
                     "parameters": [
                         {
@@ -133,6 +128,71 @@
                             "dataType": "boolean",
                             "paramType": "query"
                         }
+                    ],
+                    "deprecated": "false"
+                }
+            ]
+        },
+        {
+            "path": "/trace/count/{eventid}",
+            "operations": [
+                {
+                    "method": "POST",
+                    "summary": "Enable or disable event counting",
+                    "notes": "Enable or disable counting of a particular tracepoint",
+                    "responseClass": "",
+                    "nickname": "setCountEvent",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "parameters": [
+                        {
+                            "name": "eventid",
+                            "description": "Event ID to modify",
+                            "required": true,
+                            "allowMultiple": true,
+                            "dataType": "string",
+                            "paramType": "path"
+                        },
+                        {
+                            "name": "enabled",
+                            "description": "Counting enabled",
+                            "required": true,
+                            "allowMultiple": false,
+                            "dataType": "boolean",
+                            "paramType": "query"
+                        }
+                    ],
+                    "deprecated": "false"
+                }
+            ]
+        },
+        {
+            "path": "/trace/count",
+            "operations": [
+                {
+                    "method": "GET",
+                    "summary": "Get enabled counts",
+                    "notes": "Returned the counters for all previously-enabled tracepoint counters",
+                    "responseClass": "TraceCounts",
+                    "nickname": "getCounts",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "parameters": [
+                    ],
+                    "deprecated": "false"
+                },
+                {
+                    "method": "DELETE",
+                    "summary": "Delete enabled counts",
+                    "notes": "Disable all enabled tracepoint counting",
+                    "responseClass": "",
+                    "nickname": "deleteCounts",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "parameters": [
                     ],
                     "deprecated": "false"
                 }
@@ -199,6 +259,33 @@
                 "backtrace": {
                     "type": "boolean",
                     "description": "generate backtrace when sampled"
+                }
+            }
+        },
+        "TraceCount" : {
+            "description" : "Number of times event seen since count enabled",
+            "properties": {
+                "name":  {
+                    "type": "string",
+                    "description": "event name"
+                },
+                "count": {
+                    "type": "long",
+                    "description": "count"
+                }
+            }
+        },
+        "TraceCounts": {
+           "description": "Counts of all counted events",
+               "properties": {
+                "list": {
+                    "type": "array",
+                    "items": {"type": "TraceCount"},
+                    "description": "List of counted events"
+                },
+                "time_ms": {
+                    "type": "long",
+                    "description": "Time when counts were taken (milliseconds since boot)"
                 }
             }
         }

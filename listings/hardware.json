@@ -1,11 +1,10 @@
 {
     "apiVersion": "0.0.1",
     "swaggerVersion": "1.2",
-    "basePath": "http://{{Host}}",
+    "basePath": "{{Protocol}}://{{Host}}",
     "resourcePath": "/hardware",
     "produces": [
-        "application/json",
-        "application/xml"
+        "application/json"
     ],
     "apis": [
         {
@@ -18,8 +17,7 @@
                     "responseClass": "string",
                     "nickname" : "processorFeatures",
                     "produces": [
-                        "application/json",
-                        "application/xml"
+                        "application/json"
                     ],
                     "parameters": [
                     ],
@@ -37,8 +35,7 @@
                     "responseClass": "long",
                     "nickname" : "processorCount",
                     "produces": [
-                        "application/json",
-                        "application/xml"
+                        "application/json"
                     ],
                     "parameters": [
                     ],
