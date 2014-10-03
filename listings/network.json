@@ -26,13 +26,13 @@
       ]
       },
       {
-         "path":"/network/ifconfig/{if}",
+         "path":"/network/ifconfig/{intf}",
          "operations":[
             {
                "method":"GET",
                "summary":"Get an interface",
                "notes":"Get an interface configuration and data",
-               "responseClass":"Interface",
+               "type":"Interface",
                "errorResponses":[
                   {
                      "code":404,
@@ -45,11 +45,11 @@
                ],
                "parameters":[
                   {
-                     "name":"if",
+                     "name":"intf",
                      "description":"name of the interface",
                      "required":true,
                      "allowMultiple":false,
-                     "dataType":"string",
+                     "type":"string",
                      "paramType":"path"
                   }
                ]
@@ -77,7 +77,8 @@
       }
    ],
    "models":{
-      "interface_config":{
+      "Interface_config":{
+         "id": "Interface_config",
          "properties":{
             "name":{
                "type":"string"
@@ -96,10 +97,37 @@
             },
             "mtu":{
                "type":"string"
+            },
+            "phys_addr":{
+               "type":"string"
             }
          }
       },
-      "interface_data":{
+      "Wakeup_stats":{
+         "id": "Wakeup_stats",
+         "properties":{
+            "packets_8":{
+               "type":"long"
+            },
+            "packets_16":{
+               "type":"long"
+            },
+            "packets_32":{
+               "type":"long"
+            },
+            "packets_64":{
+                "type":"long"
+            },
+            "packets_128":{
+                "type":"long"
+            },
+            "packets_256":{
+                "type":"long"
+            }
+        }
+      },
+      "Interface_data":{
+         "id": "Interface_data",
          "properties":{
             "ifi_type":{
                "type":"char"
@@ -190,16 +218,23 @@
             },
 	    "ifi_oqueue_is_full":{
                "type":"long"
+            },
+            "ifi_iwakeup_stats":{
+                "type": "Wakeup_stats"
+            },
+            "ifi_owakeup_stats":{
+                "type": "Wakeup_stats"
             }
          }
       },
       "Interface":{
+         "id":"Interface",
          "properties":{
             "config":{
-               "type":"interface_config"
+               "type":"Interface_config"
             },
             "data":{
-               "type":"interface_data"
+               "type":"Interface_data"
             },
             "time":{
                "type":"long",
@@ -208,6 +243,7 @@
          }
       },
       "Route":{
+         "id":"Route",
          "properties":{
             "destination":{
                "type":"string"

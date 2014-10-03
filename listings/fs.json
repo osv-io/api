@@ -13,10 +13,9 @@
                 {
                     "method": "GET",
                     "summary": "report a file system usage",
-                    "notes": "",
                     "type": "array",
 				    "items": {
-				        "$ref": "DFStat"
+				        "type": "DFStat"
 				    },
                     "errorResponses":[
                      {
@@ -34,11 +33,28 @@
                         "description":"mount point",
                         "required":false,
                         "allowMultiple":true,
-                        "dataType":"string",
+                        "type":"string",
                         "paramType":"path"
                     }
                     ],
                     "deprecated": "false"
+                }
+            ]
+        },
+        {
+            "path": "/fs/df/",
+            "operations": [
+                {
+                    "method": "GET",
+                    "summary": "Return all file systems",
+                    "type": "array",
+				    "items": {
+				        "$ref": "DFStat"
+				    },
+                    "nickname" : "list_df_stats",
+                    "produces": [
+                        "application/json"
+                    ]
                 }
             ]
         }
@@ -46,6 +62,7 @@
     "models" : {
         "DFStat": {
            "description": "Information on one file system",
+           "id": "DFStat",
            "properties": {
                 "filesystem" : {
                      "type": "string",
