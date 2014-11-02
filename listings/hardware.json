@@ -25,6 +25,34 @@
             ]
         },
         {
+            "path": "/hardware/firmware/vendor",
+            "operations": [
+                {
+                    "method": "GET",
+                    "summary": "Return the firmware vendor",
+                    "type": "string",
+                    "nickname" : "firmware_vendor",
+                    "produces": [
+                        "application/json"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "/hardware/hypervisor",
+            "operations": [
+                {
+                    "method": "GET",
+                    "summary": "Return the Hypervisor type",
+                    "type": "string",
+                    "nickname" : "get_hypervisor",
+                    "produces": [
+                        "application/json"
+                    ]
+                }
+            ]
+        },
+        {
             "path": "/hardware/processor/count",
             "operations": [
                 {
